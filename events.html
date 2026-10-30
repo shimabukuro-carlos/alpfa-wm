@@ -62,12 +62,11 @@
         <p data-reveal="up" style="text-align:center;font-size:0.9rem;color:var(--white-faint);max-width:520px;margin:0 auto;line-height:1.8;">Our latest flyers and announcements, straight from Instagram.</p>
 
         <!--
-          INSTAGRAM FEED — updates automatically whenever @alpfawm posts.
-          To turn it on: create a free feed at https://behold.so connected to the
-          @alpfawm Instagram account, then paste its Feed ID into data-feed-id below.
-          Until a Feed ID is set, a "Follow us on Instagram" card shows instead.
+          INSTAGRAM FEED — loads the latest @alpfawm posts from /api/instagram
+          (see api/instagram.js). Updates automatically whenever we post.
+          If the feed can't load, a "Follow us on Instagram" card shows instead.
         -->
-        <div class="ig-feed" id="igFeed" data-feed-id="" data-reveal="up">
+        <div class="ig-feed" id="igFeed" data-reveal="up">
           <div class="ig-fallback">
             <span class="section-label">@alpfawm</span>
             <h3>Upcoming events are posted on Instagram first</h3>

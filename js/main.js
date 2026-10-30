@@ -260,18 +260,37 @@ document.querySelectorAll('.mini-show').forEach(function (wrap) {
 // ============================================
 
 (function () {
-  const feed   = document.getElementById('igFeed');
-  const feedId = feed && feed.dataset.feedId.trim();
-  if (!feedId) return;
+  const feed = document.getElementById('igFeed');
+  if (!feed) return;
 
-  const script = document.createElement('script');
-  script.type = 'module';
-  script.src  = 'https://w.behold.so/widget.js';
-  document.head.appendChild(script);
+  const esc = (str) => str.replace(/[&<>"']/g, (c) => (
+    { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]
+  ));
 
-  const widget = document.createElement('behold-widget');
-  widget.setAttribute('feed-id', feedId);
-  feed.replaceChildren(widget);
+  fetch('/api/instagram')
+    .then((r) => r.ok ? r.json() : Promise.reject())
+    .then(({ posts }) => {
+      if (!posts || !posts.length) return;
+      const grid = document.createElement('div');
+      grid.className = 'ig-grid';
+      grid.innerHTML = posts.map((p) => {
+        const date = new Date(p.timestamp).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        const caption = p.caption.length > 120 ? p.caption.slice(0, 120).trim() + '…' : p.caption;
+        return `
+          <a class="ig-post" href="${esc(p.permalink)}" target="_blank" rel="noopener">
+            <div class="ig-post-img">
+              <img src="${esc(p.image)}" alt="${esc(caption || 'Instagram post')}" loading="lazy" />
+              ${p.isVideo ? '<span class="ig-post-video">&#9654;</span>' : ''}
+            </div>
+            <div class="ig-post-body">
+              <p class="ig-post-date">${date}</p>
+              <p class="ig-post-caption">${esc(caption)}</p>
+            </div>
+          </a>`;
+      }).join('');
+      feed.replaceChildren(grid);
+    })
+    .catch(() => { /* keep the "Follow on Instagram" fallback */ });
 })();
 
 // ============================================

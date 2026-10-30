@@ -1537,6 +1537,21 @@ footer .logo-img {
   padding: 0 72px;
 }
 
+.events-year {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--gold);
+  margin-top: 64px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--gold-dim);
+}
+
+.events-year + .carousel-wrap { margin-top: 32px; }
+
+.carousel-wrap.single-page .carousel-btn,
+.carousel-wrap.single-page .carousel-dots { display: none; }
+
 .carousel-track {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

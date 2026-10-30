@@ -204,18 +204,23 @@ document.querySelectorAll('.mini-show').forEach(function (wrap) {
 // PHOTO CAROUSEL
 // ============================================
 
-(function () {
-  const track   = document.getElementById('carouselTrack');
-  const prevBtn = document.getElementById('carouselPrev');
-  const nextBtn = document.getElementById('carouselNext');
-  const dotsEl  = document.getElementById('carouselDots');
-  if (!track) return;
+document.querySelectorAll('.carousel-wrap').forEach(function (wrap) {
+  const track   = wrap.querySelector('.carousel-track');
+  const prevBtn = wrap.querySelector('.carousel-prev');
+  const nextBtn = wrap.querySelector('.carousel-next');
+  const dotsEl  = wrap.querySelector('.carousel-dots');
 
   const slides     = Array.from(track.querySelectorAll('.carousel-slide'));
-  const perPage    = () => window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : 3;
+  // Desktop shows the whole row (up to 4) at once; smaller screens page through it
+  const perPage    = () => window.innerWidth <= 600 ? 1 : window.innerWidth <= 900 ? 2 : Math.min(slides.length, 4);
   let   current    = 0;
 
   function totalPages() { return Math.ceil(slides.length / perPage()); }
+
+  function layout() {
+    track.style.gridTemplateColumns = `repeat(${perPage()}, 1fr)`;
+    wrap.classList.toggle('single-page', totalPages() <= 1);
+  }
 
   function buildDots() {
     dotsEl.innerHTML = '';
@@ -249,11 +254,12 @@ document.querySelectorAll('.mini-show').forEach(function (wrap) {
   prevBtn.addEventListener('click', () => goTo(current - 1));
   nextBtn.addEventListener('click', () => goTo(current + 1));
 
-  window.addEventListener('resize', () => { buildDots(); goTo(0); });
+  window.addEventListener('resize', () => { layout(); buildDots(); goTo(0); });
 
+  layout();
   buildDots();
   goTo(0);
-})();
+});
 
 // ============================================
 // INSTAGRAM FEED (events page)

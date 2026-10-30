@@ -1051,7 +1051,7 @@ footer .logo-img {
 
 .marquee-logo:hover { opacity: 1; }
 
-.marquee-logo-ey { padding: 6px 20px; }
+.marquee-logo-sw { padding: 4px 16px; }
 
 .marquee-inner span {
   font-family: 'Playfair Display', Georgia, serif;
@@ -1336,6 +1336,35 @@ footer .logo-img {
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
   margin-top: 60px;
+}
+
+/* Instagram feed (events page) */
+.ig-feed {
+  margin-top: 48px;
+}
+
+.ig-fallback {
+  background: var(--green-card);
+  border: 1px solid var(--gold-dim);
+  border-radius: 3px;
+  padding: 56px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.ig-fallback h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  color: var(--white);
+}
+
+.ig-fallback p {
+  font-size: 0.9rem;
+  color: var(--white-faint);
 }
 
 .event-card {
@@ -1870,6 +1899,10 @@ footer .logo-img {
   max-width: 140px;
 }
 
+.sponsor-company-img-wide {
+  max-width: 340px;
+}
+
 .sponsor-tier-card {
   border: 1px solid rgba(255,255,255,0.07);
   background: rgba(255,255,255,0.02);
@@ -1926,6 +1959,12 @@ footer .logo-img {
   background: rgba(201,160,82,0.18);
   color: var(--gold);
   border: 1px solid rgba(201,160,82,0.35);
+}
+
+.bronze-badge {
+  background: rgba(176,121,72,0.16);
+  color: #d29a68;
+  border: 1px solid rgba(176,121,72,0.4);
 }
 
 .online-badge {

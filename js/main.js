@@ -256,6 +256,25 @@ document.querySelectorAll('.mini-show').forEach(function (wrap) {
 })();
 
 // ============================================
+// INSTAGRAM FEED (events page)
+// ============================================
+
+(function () {
+  const feed   = document.getElementById('igFeed');
+  const feedId = feed && feed.dataset.feedId.trim();
+  if (!feedId) return;
+
+  const script = document.createElement('script');
+  script.type = 'module';
+  script.src  = 'https://w.behold.so/widget.js';
+  document.head.appendChild(script);
+
+  const widget = document.createElement('behold-widget');
+  widget.setAttribute('feed-id', feedId);
+  feed.replaceChildren(widget);
+})();
+
+// ============================================
 // HERO LOGO — 3D TILT + SHINE
 // ============================================
 

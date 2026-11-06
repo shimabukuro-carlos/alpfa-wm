@@ -4,7 +4,8 @@
 const FIELDS = 'id,caption,media_type,media_url,thumbnail_url,permalink,timestamp';
 
 module.exports = async (req, res) => {
-  const token = process.env.INSTAGRAM_TOKEN;
+  // Trim stray whitespace/quotes that often sneak in when pasting the token
+  const token = (process.env.INSTAGRAM_TOKEN || '').trim().replace(/^["']+|["']+$/g, '');
   if (!token) {
     res.status(503).json({ error: 'INSTAGRAM_TOKEN is not set' });
     return;

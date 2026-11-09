@@ -2681,6 +2681,33 @@ footer .logo-text:hover { color: var(--white); }
   /* === HOME: keep the photo caption from covering "Our Purpose" === */
   .mission-image-col { margin-bottom: 36px; }
 
+  /* === CENTERING === */
+  .hero-right-col { margin-left: 0 !important; }
+  .hero-title { padding-left: 0; }
+  /* Cancel the trailing letter-spacing so the subtitle sits centered */
+  .hero-subtitle { margin-right: -0.28em; }
+  .wm-story-inner { padding: 60px 20px; gap: 40px; }
+
+  /* === VERTICAL SPACE === */
+  /* Landscape photos: a shorter frame crops less off the sides */
+  .about-img-stack .image-frame,
+  .mission-image-col .image-frame { height: 400px !important; }
+  .section-card .two-col .image-frame { min-height: 340px !important; }
+
+  .feature-grid { gap: 14px; margin-top: 36px; }
+  .feature-card { padding: 24px 20px; gap: 10px; }
+  .feature-icon { width: 36px; height: 36px; font-size: 0.85rem; }
+
+  .sponsor-lower-grid { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+  .sponsor-lower-grid .sponsor-tier-card { padding: 20px 12px; }
+  .sponsor-lower-grid .sponsor-tier-badge { margin-bottom: 16px !important; font-size: 0.52rem; padding: 5px 10px; }
+  .sponsor-lower-grid .sponsor-company-card { padding: 12px 14px; }
+  .sponsor-lower-grid .sponsor-company-img-sm { height: 32px; max-width: 100%; }
+
+  .tiers-grid { gap: 16px; margin-top: 36px; }
+  .tier-card { padding: 24px 20px; }
+  .tier-perks-check { gap: 8px; }
+
   /* === FOOTER === */
   .footer-inner { padding: 60px 20px 32px; grid-template-columns: 1fr 1fr; gap: 32px 20px; }
   .footer-brand { grid-column: 1 / -1; }

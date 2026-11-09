@@ -2674,8 +2674,17 @@ footer .logo-text:hover { color: var(--white); }
   .tier-card { padding: 28px 20px; }
   .tier-perks-check li { font-size: 0.8rem; }
 
+  /* === READABILITY === */
+  /* Faint grey text is too dim to read on a small screen outdoors */
+  :root { --white-faint: rgba(247,245,240,0.55); }
+
+  /* === HOME: keep the photo caption from covering "Our Purpose" === */
+  .mission-image-col { margin-bottom: 36px; }
+
   /* === FOOTER === */
-  .footer-inner { padding: 60px 20px 32px; }
+  .footer-inner { padding: 60px 20px 32px; grid-template-columns: 1fr 1fr; gap: 32px 20px; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-col { gap: 0; }
 
   /* === SECTION HEADINGS === */
   h2 { font-size: clamp(1.8rem, 7vw, 3rem) !important; }
